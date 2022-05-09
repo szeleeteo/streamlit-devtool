@@ -26,6 +26,7 @@ default_text = (
     "quarterly earnings per diluted share of $1.52."
 )
 
+st.header("NLP Demo")
 input_text = st.text_area("Input text", default_text)
 
 models = [
