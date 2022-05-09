@@ -6,7 +6,9 @@ with st.sidebar:
     st.header("Google Slides")
     url_container = st.container()
     hide_controls = st.checkbox("Hide controls", value=True)
+    loop = st.checkbox("Loop after the last slide", value=True)
     default_url = f"{default_url}?rm=minimal" if hide_controls else default_url
+    default_url = f"{default_url}?loop=true" if loop else default_url
     url = url_container.text_area("URL", value=default_url, height=150)
 
 
