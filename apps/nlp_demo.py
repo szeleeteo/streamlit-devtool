@@ -106,4 +106,4 @@ if show_dependency_parsing:
         style="dep",
         merge_nouns=merge_nouns,
     )
-    st_html(dep_res, height=200, scrolling=True)
+    st_html(dep_res)
