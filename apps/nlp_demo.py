@@ -69,10 +69,13 @@ def predict_with_awesome_ml_model(
         displacy_options["colors"] = {growth_ent: color}
         displacy_options["ents"].append(growth_ent)
 
+    html = ""
     for content in contents:
         doc = nlp(content)
         html = displacy.render(doc, style=style, options=displacy_options)
         st.write(html, unsafe_allow_html=True)
+
+    return html
 
 
 with st.sidebar:
