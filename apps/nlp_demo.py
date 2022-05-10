@@ -19,6 +19,7 @@ ALL_KEYWORDS = [
     "profit",
 ]
 
+st.header("NLP Demo")
 default_text = (
     "Apple today announced financial results for its fiscal 2022 second "
     "quarter ended March 26, 2022. The company posted a March quarter "
