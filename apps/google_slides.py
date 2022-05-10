@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit.components.v1 import iframe as st_iframe
 
 default_url = "https://docs.google.com/presentation/d/1AkfSZiTULjeq7_5y5pY-EdDcfO6NIvBf9i9ieMhRF7E/embed"
 
@@ -10,4 +11,4 @@ with st.sidebar:
     url = url_container.text_area("URL", value=default_url, height=150)
 
 
-st.components.v1.iframe(default_url, height=600)
+st_iframe(default_url, height=600)
