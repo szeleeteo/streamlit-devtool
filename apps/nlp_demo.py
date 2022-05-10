@@ -106,4 +106,4 @@ if show_dependency_parsing:
         style="dep",
         merge_nouns=merge_nouns,
     )
-    st_html(dep_res)
+    st.write(dep_res, unsafe_allow_html=True)
