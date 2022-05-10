@@ -20,7 +20,6 @@ ALL_KEYWORDS = [
     "profit",
 ]
 
-st.header("NLP Demo")
 default_text = (
     "Apple today announced financial results for its fiscal 2022 second "
     "quarter ended March 26, 2022. The company posted a March quarter "
@@ -28,7 +27,7 @@ default_text = (
     "quarterly earnings per diluted share of $1.52."
 )
 
-input_text = st.text_area("Input text", value=default_text)
+input_text = st.text_area("Input text", value=default_text, height=180)
 
 models = [
     "en_core_web_sm",  # lighter, faster, less accurate
