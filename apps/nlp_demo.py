@@ -1,8 +1,9 @@
 import warnings
 
 import spacy
-from spacy import displacy
 import streamlit as st
+from spacy import displacy
+from streamlit.components.v1 import html as st_html
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
@@ -11,11 +12,11 @@ ALL_KEYWORDS = [
     "earning",
     "customer",
     "user",
+    "subscriber",
     "sale",
     "income",
     "download",
     "install",
-    "traffic",
     "profit",
 ]
 
@@ -91,15 +92,17 @@ with st.sidebar:
         merge_nouns = st.checkbox("Merge nouns")
 
 
-predict_with_awesome_ml_model(
+match_res = predict_with_awesome_ml_model(
     input_text, keywords=growth_keywords, ner_types=quantifiable_types
 )
+st_html(match_res, height=200, scrolling=True)
 
 if show_dependency_parsing:
-    predict_with_awesome_ml_model(
+    dep_res = predict_with_awesome_ml_model(
         input_text,
         keywords=growth_keywords,
         ner_types=quantifiable_types,
         style="dep",
         merge_nouns=merge_nouns,
     )
+    st_html(dep_res, height=200, scrolling=True)
