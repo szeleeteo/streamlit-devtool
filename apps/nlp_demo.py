@@ -73,7 +73,6 @@ def predict_with_awesome_ml_model(
     for content in contents:
         doc = nlp(content)
         html = displacy.render(doc, style=style, options=displacy_options)
-        st.write(html, unsafe_allow_html=True)
 
     return html
 
