@@ -39,18 +39,25 @@ nlp = spacy.load(model)
 ALL_NER_TYPES = list(nlp.get_pipe("ner").labels)
 
 
-def predict_with_awesome_ml_model(contents, ner_types=None, keywords=None):
+def predict_with_awesome_ml_model(
+    contents, ner_types=None, keywords=None, style="ent", merge_nouns=False
+):
     if isinstance(contents, str):
         contents = [contents]
 
     displacy_options = {}
     displacy_options["ents"] = ner_types or []
 
+    if "merge_noun_chunks" in nlp.pipe_names:
+        nlp.remove_pipe("merge_noun_chunks")
+    if "entity_ruler" in nlp.pipe_names:
+        nlp.remove_pipe("entity_ruler")
+
+    if style == "dep" and merge_nouns:
+        nlp.add_pipe("merge_noun_chunks")
+
     if keywords:
         growth_ent = "GROWTH"
-
-        if "entity_ruler" in nlp.pipe_names:
-            nlp.remove_pipe("entity_ruler")
         ruler = nlp.add_pipe("entity_ruler")
         patterns = [
             {"label": growth_ent, "pattern": [{"LEMMA": kw}]} for kw in keywords
@@ -63,7 +70,7 @@ def predict_with_awesome_ml_model(contents, ner_types=None, keywords=None):
 
     for content in contents:
         doc = nlp(content)
-        html = displacy.render(doc, style="ent", options=displacy_options)
+        html = displacy.render(doc, style=style, options=displacy_options)
         st.write(html, unsafe_allow_html=True)
 
 
@@ -76,7 +83,22 @@ with st.sidebar:
         ALL_NER_TYPES,
         ["ORG", "CARDINAL", "ORDINAL", "PERCENT", "QUANTITY", "MONEY"],
     )
+    show_dependency_parsing = st.checkbox("Enable dependency parsing")
+
+    merge_nouns = False
+    if show_dependency_parsing:
+        merge_nouns = st.checkbox("Merge nouns")
+
 
 predict_with_awesome_ml_model(
     input_text, keywords=growth_keywords, ner_types=quantifiable_types
 )
+
+if show_dependency_parsing:
+    predict_with_awesome_ml_model(
+        input_text,
+        keywords=growth_keywords,
+        ner_types=quantifiable_types,
+        style="dep",
+        merge_nouns=merge_nouns,
+    )
