@@ -7,7 +7,7 @@ from streamlit.components.v1 import html as st_html
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
-ALL_KEYWORDS = [
+GROWTH_KEYWORDS = [
     "revenue",
     "earning",
     "customer",
@@ -79,7 +79,7 @@ def predict_with_awesome_ml_model(
 
 with st.sidebar:
     growth_keywords = st.multiselect(
-        "Keywords", ALL_KEYWORDS, ["revenue", "earning", "customer"]
+        "Keywords", GROWTH_KEYWORDS, ["revenue", "earning", "customer"]
     )
     quantifiable_types = st.multiselect(
         "Keywords",
@@ -96,7 +96,7 @@ with st.sidebar:
 match_res = predict_with_awesome_ml_model(
     input_text, keywords=growth_keywords, ner_types=quantifiable_types
 )
-st_html(match_res, height=200, scrolling=True)
+st.write(match_res, unsafe_allow_html=True)
 
 if show_dependency_parsing:
     dep_res = predict_with_awesome_ml_model(

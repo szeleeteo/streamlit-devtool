@@ -3,6 +3,7 @@ from streamlit.components.v1 import iframe as st_iframe
 
 default_url = "https://docs.google.com/presentation/d/1AkfSZiTULjeq7_5y5pY-EdDcfO6NIvBf9i9ieMhRF7E/embed"
 
+st.header("AI Talk")
 with st.sidebar:
     st.header("Google Slides")
     url_container = st.container()
