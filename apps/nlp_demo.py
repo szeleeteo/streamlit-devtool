@@ -3,7 +3,6 @@ import warnings
 import spacy
 import streamlit as st
 from spacy import displacy
-from streamlit.components.v1 import html as st_html
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
