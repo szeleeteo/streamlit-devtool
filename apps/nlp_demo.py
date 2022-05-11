@@ -81,7 +81,7 @@ with st.sidebar:
         "Keywords", GROWTH_KEYWORDS, ["revenue", "earning", "customer"]
     )
     quantifiable_types = st.multiselect(
-        "Keywords",
+        "NER Types",
         ALL_NER_TYPES,
         ["ORG", "CARDINAL", "ORDINAL", "PERCENT", "QUANTITY", "MONEY"],
     )
