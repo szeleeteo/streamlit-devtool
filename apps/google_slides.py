@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit.components.v1 import iframe as st_iframe
 
-default_url = "https://docs.google.com/presentation/d/1AkfSZiTULjeq7_5y5pY-EdDcfO6NIvBf9i9ieMhRF7E/embed"
+default_url = "https://docs.google.com/presentation/d/1LGeKw7_dZaNyI-lKWZdqo3weUJBFopfn1b5GFxbhYyA/embed"
 
 
 with st.sidebar:
